@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../components/Card';
+import Card from '../../components/CustomCard';
 import Row from '../../components/Row';
 import Meta from '../../components/Meta';
 
@@ -20,8 +20,8 @@ const Trofeus = () => (
     </Card>
     <Card>
       <h2>Progresso</h2>
-      <div className="progress"><div style={{width:'72%'}}></div></div>
-      <p style={{opacity:.8,marginTop:'0.5rem'}}>72% concluído • 29/40 troféus</p>
+      <div className="progress"><div style={{ width: '72%' }}></div></div>
+      <p style={{ opacity: .8, marginTop: '0.5rem' }}>72% concluído • 29/40 troféus</p>
     </Card>
   </section>
 );

@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../components/Card';
+import Card from '../../components/CustomCard';
 import Row from '../../components/Row';
 import Meta from '../../components/Meta';
 
@@ -17,7 +17,7 @@ const Guias = () => (
           <a className="btn" href="#">Abrir</a>
         </Row>
       </div>
-      <div style={{marginTop:'0.625rem'}}><a className="btn" href="#">Criar Guia</a></div>
+      <div style={{ marginTop: '0.625rem' }}><a className="btn" href="#">Criar Guia</a></div>
     </Card>
   </section>
 );

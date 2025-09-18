@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../components/Card';
+import Card from '../../components/CustomCard';
 import Row from '../../components/Row';
 import Meta from '../../components/Meta';
 import Tag from '../../components/Tag';
