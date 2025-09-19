@@ -1,19 +1,15 @@
 import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import { Card } from 'react-bootstrap';
 
-const CustomCard = ({ children, style }) => (
+const CustomCard = ({ children, style, className, ...props }) => (
   <Card
-    elevation={0}
-    sx={{
-      background: 'linear-gradient(90deg, #23232b 0%, #3a2547 100%)',
-      border: '1px solid #1f2937',
-      borderRadius: '2rem',
-      p: '0.875rem',
-      ...style
-    }}
+    className={`card-dark ${className || ''}`}
+    style={style}
+    {...props}
   >
-    <CardContent sx={{ p: 0 }}>{children}</CardContent>
+    <Card.Body>
+      {children}
+    </Card.Body>
   </Card>
 );
 

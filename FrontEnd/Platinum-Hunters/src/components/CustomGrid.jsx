@@ -1,48 +1,34 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Row, Col } from 'react-bootstrap';
 
 const CustomGrid = ({ items }) => (
-    <Box
-        sx={{
-            display: 'flex',
-            gap: 2,
-            overflowX: 'auto',
-            py: 1,
-            px: 0,
-            scrollSnapType: 'x mandatory',
-            WebkitOverflowScrolling: 'touch',
-        }}
-    >
+    <div className="d-flex gap-3 overflow-auto py-2 px-0" style={{ scrollSnapType: 'x mandatory' }}>
         {items.map((item, idx) => (
-            <Box
+            <div
                 key={idx}
-                sx={{
-                    minWidth: 120,
-                    maxWidth: 180,
-                    flex: '0 0 clamp(120px, 20vw, 180px)',
-                    textAlign: 'center',
+                className="flex-shrink-0 text-center"
+                style={{
+                    minWidth: '120px',
+                    maxWidth: '180px',
                     scrollSnapAlign: 'start',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s'
                 }}
+                onMouseEnter={e => e.target.closest('div').style.transform = 'scale(1.05)'}
+                onMouseLeave={e => e.target.closest('div').style.transform = 'scale(1)'}
             >
-                <Box
-                    component="img"
+                <img
                     src={item.img}
                     alt={item.name}
-                    sx={{
-                        width: '100%',
-                        height: 140,
-                        objectFit: 'cover',
-                        borderRadius: 2,
-                        mb: 1,
-                        boxShadow: 2,
-                    }}
+                    className="w-100 rounded shadow"
+                    style={{ height: '140px', objectFit: 'cover' }}
                 />
-                <Typography variant="body2" sx={{ fontSize: '0.95rem', color: 'text.primary' }}>
+                <p className="text-white small mt-2 text-truncate mb-0">
                     {item.name}
-                </Typography>
-            </Box>
+                </p>
+            </div>
         ))}
-    </Box>
+    </div>
 );
 
 export default CustomGrid;

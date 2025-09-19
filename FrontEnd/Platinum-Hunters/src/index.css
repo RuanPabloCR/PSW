@@ -1,72 +1,243 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
 :root {
-  font-family: 'Roboto', 'Montserrat', Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-size: 16px;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
+  --bs-dark: #000000;
+  --bs-body-bg: #000000;
+  --bs-body-color: #ffffff;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000000;
+  color: #ffffff;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.bg-purple {
+  background-color: #6f42c1 !important;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
+.text-purple {
+  color: #6f42c1 !important;
+}
+
+.border-purple {
+  border-color: #6f42c1 !important;
+}
+
+.navbar-dark {
+  background-color: #000000 !important;
+  border-bottom: 1px solid #6f42c1;
+}
+
+.card-dark {
   background-color: #1a1a1a;
+  border-color: #333333;
+  color: #ffffff;
+}
+
+.card-dark .text-muted {
+  color: #adb5bd !important;
+  /* Cor mais clara para melhor contraste */
+}
+
+.card-dark .border-secondary {
+  border-color: #4a4a4a !important;
+  /* Borda mais visível */
+}
+
+.btn-purple {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  color: #ffffff;
+}
+
+.btn-purple:hover {
+  background-color: #5a2d91;
+  border-color: #5a2d91;
+  color: #ffffff;
+}
+
+/* Melhorar contraste dos selects */
+.form-select.bg-dark {
+  background-color: #2a2a2a !important;
+  border-color: #4a4a4a !important;
+  color: #ffffff !important;
+}
+
+.form-select.bg-dark option {
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+/* Melhorar contraste dos inputs */
+.form-control.bg-dark {
+  background-color: #2a2a2a !important;
+  border-color: #4a4a4a !important;
+  color: #ffffff !important;
+}
+
+.form-control.bg-dark::placeholder {
+  color: #adb5bd !important;
+}
+
+.form-control.bg-dark:focus {
+  background-color: #2a2a2a !important;
+  border-color: #6f42c1 !important;
+  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25) !important;
+}
+
+/* Melhorar contraste dos badges */
+.badge.bg-secondary {
+  background-color: #495057 !important;
+  color: #ffffff !important;
+}
+
+.badge[bg="outline-purple"] {
+  background-color: transparent !important;
+  border: 1px solid #6f42c1 !important;
+  color: #6f42c1 !important;
+}
+
+/* Custom theme colors */
+:root {
+  --bs-primary: #8b5cf6;
+  --bs-secondary: #1f1f1f;
+  --bs-dark: #000000;
+  --bs-body-bg: #000000;
+  --bs-body-color: #ffffff;
+}
+
+/* Custom card styling */
+.card {
+  background-color: #1a1a1a;
+  border-color: #333333;
+  color: #ffffff;
+}
+
+.card-header {
+  background-color: #1f1f1f;
+  border-bottom-color: #333333;
+}
+
+/* Custom navbar styling */
+.navbar-dark {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile bottom navigation */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #262626;
+  z-index: 1050;
+}
+
+.mobile-nav .nav-link {
+  color: #9ca3af;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.mobile-nav .nav-link.active {
+  color: #8b5cf6;
+}
+
+/* Spacer for mobile nav */
+.mobile-spacer {
+  height: 70px;
+}
+
+/* Game card hover effects */
+.game-card {
+  transition: transform 0.3s ease;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
 
-button:hover {
-  border-color: #646cff;
+.game-card:hover {
+  transform: translateY(-5px);
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Melhorar contraste em botões outline */
+.btn-outline-secondary {
+  color: #adb5bd !important;
+  border-color: #4a4a4a !important;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+.btn-outline-secondary:hover {
+  background-color: #495057 !important;
+  border-color: #495057 !important;
+  color: #ffffff !important;
+}
 
-  a:hover {
-    color: #747bff;
-  }
+.btn-outline-light {
+  color: #f8f9fa !important;
+  border-color: #f8f9fa !important;
+}
 
-  button {
-    background-color: #f9f9f9;
-  }
+.btn-outline-light:hover {
+  background-color: #f8f9fa !important;
+  border-color: #f8f9fa !important;
+  color: #000000 !important;
+}
+
+/* InputGroup text melhorado */
+.input-group-text.bg-dark {
+  background-color: #2a2a2a !important;
+  border-color: #4a4a4a !important;
+  color: #adb5bd !important;
+}
+
+/* Texto em cards escuros */
+.card-dark .small.text-muted {
+  color: #ced4da !important;
+}
+
+.text-light {
+  color: #f8f9fa !important;
+}
+
+/* Melhorar contraste para textos específicos em cards */
+.card-dark .text-muted {
+  color: #adb5bd !important;
+}
+
+.card-dark .small {
+  color: #ced4da !important;
+}
+
+.card-dark .small.text-muted {
+  color: #adb5bd !important;
+}
+
+/* Nav Pills melhorados */
+.nav-pills .nav-link {
+  color: #adb5bd !important;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #6f42c1 !important;
+  color: #ffffff !important;
+}
+
+/* Badges com melhor contraste */
+.badge.bg-outline-purple {
+  background-color: transparent !important;
+  border: 1px solid #6f42c1 !important;
+  color: #6f42c1 !important;
+}
+
+/* Melhorar visibilidade de ícones */
+.text-muted svg {
+  color: #adb5bd !important;
 }

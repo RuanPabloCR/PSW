@@ -1,49 +1,55 @@
-import * as React from 'react';
-import { AppBar, Toolbar, IconButton, Box, InputBase, Paper } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Trophy, Gamepad2, BookOpen, Crown, Library, Map } from 'lucide-react';
 
-export default function NavBar({ children }) {
-    const childrenArray = React.Children.toArray(children);
-    const homeLink = childrenArray[0];
-    const pageLinks = childrenArray.slice(1);
-    return (
-        <AppBar position="static" sx={{ background: 'linear-gradient(90deg, #23232b 0%, #3a2547 100%)' }}>
-            <Toolbar sx={{ gap: 2 }}>
-                <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-                    <MenuIcon />
-                </IconButton>
-                <Box sx={{ mr: 2, fontWeight: 'bold', fontSize: '1.25rem', letterSpacing: 1 }}>
-                    {React.isValidElement(homeLink)
-                        ? React.cloneElement(homeLink, { style: { ...(homeLink.props.style || {}), fontWeight: 'bold', fontSize: '1.15rem', whiteSpace: 'nowrap' } })
-                        : homeLink}
-                </Box>
-                <Paper
-                    component="form"
-                    sx={{ p: '2px 6px', display: 'flex', alignItems: 'center', width: 180, background: 'rgba(255,255,255,0.08)', boxShadow: 'none', borderRadius: 2, mr: 2 }}
+const NavBar = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const menuItems = [
+    { name: 'Home', path: '/', icon: Crown },
+    { name: 'Jogos', path: '/jogos', icon: Gamepad2 },
+    { name: 'Troféus', path: '/trofeus', icon: Trophy },
+    { name: 'Ranking', path: '/ranking', icon: Crown },
+    { name: 'Biblioteca', path: '/biblioteca', icon: Library },
+    { name: 'Guias', path: '/guias', icon: Map },
+  ];
+
+  return (
+    <Navbar bg="dark" variant="dark" expand="lg" className="navbar-dark" expanded={expanded}>
+      <Container>
+        <Navbar.Brand href="/" className="d-flex align-items-center">
+          <Trophy className="me-2" size={24} style={{ color: '#6f42c1' }} />
+          <span className="text-purple fw-bold">Platinum Hunters</span>
+        </Navbar.Brand>
+
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          onClick={() => setExpanded(!expanded)}
+        />
+
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Nav.Link
+                  key={item.name}
+                  as={NavLink}
+                  to={item.path}
+                  className="d-flex align-items-center px-3 py-2 mx-1 rounded"
+                  onClick={() => setExpanded(false)}
                 >
-                    <InputBase
-                        sx={{ ml: 1, flex: 1, color: 'inherit', fontSize: '0.95rem' }}
-                        placeholder="Buscar..."
-                        inputProps={{ 'aria-label': 'buscar' }}
-                    />
-                    <IconButton type="submit" sx={{ p: '6px', color: 'inherit' }} aria-label="search">
-                        <SearchIcon />
-                    </IconButton>
-                </Paper>
-                <Box sx={{ display: 'flex', flexGrow: 1, alignItems: 'center', gap: 1, minWidth: 0 }}>
-                    {pageLinks.map((child, idx) =>
-                        React.isValidElement(child)
-                            ? React.cloneElement(child, {
-                                style: {
-                                    ...(child.props.style || {}), fontSize: '0.95rem', whiteSpace: 'nowrap', overflow: 'hidden',
-                                    textOverflow: 'ellipsis', minWidth: 0
-                                }
-                            })
-                            : child
-                    )}
-                </Box>
-            </Toolbar>
-        </AppBar>
-    );
-}
+                  <Icon size={18} className="me-2" />
+                  {item.name}
+                </Nav.Link>
+              );
+            })}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default NavBar;

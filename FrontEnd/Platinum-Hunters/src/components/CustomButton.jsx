@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+import { Button } from './BaseComponents';
 
 const CustomButton = ({ children, ...props }) => (
-    <Button variant="outlined" color="primary" {...props}>
+    <Button variant="outline" {...props}>
         {children}
     </Button>
 );
